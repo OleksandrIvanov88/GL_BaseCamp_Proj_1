@@ -73,7 +73,7 @@ int main(void)
         LCD_Printf("X_cord = %-4d\r\n", X_cord_value);
         LCD_Printf("Y_cord = %-4d\r\n", Y_cord_value);
 
-        //Drawing the new position of the ball according to the new new X and Y coordinate
+        //Drawing the new position of the ball according to the new X and Y coordinate
         if (X_last_cord != X_cord_value || Y_last_cord != Y_cord_value) {
             LCD_FillCircle(X_last_cord, Y_last_cord, 10, BLACK);
             LCD_FillCircle(X_cord_value, Y_cord_value, 10, WHITE);
