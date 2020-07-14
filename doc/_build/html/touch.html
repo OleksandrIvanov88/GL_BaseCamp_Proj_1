@@ -1,0 +1,381 @@
+
+
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>touch.c – source file of TouchScreenDriver &#8212; TouchScreenDriver  documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="TouchScreenDriver’s documentation!" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="TouchScreenDriver’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TouchScreenDriver  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">touch.c – source file of TouchScreenDriver</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="touch-c-source-file-of-touchscreendriver">
+<h1>touch.c – source file of TouchScreenDriver<a class="headerlink" href="#touch-c-source-file-of-touchscreendriver" title="Permalink to this headline">¶</a></h1>
+<dl class="c function">
+<dt id="c.touch_init">
+void <code class="sig-name descname">touch_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_init" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize GPIOs init structures, Handel Structure for ADC and configuration structure for ADC channels.</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param context</dt>
+<dd class="field-odd"><p>Should be called before main’s while(1) cycle.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_detect_touch">
+int <code class="sig-name descname">touch_detect_touch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_detect_touch" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Detects if touch panel was pressed</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>1 if touch detected and 0 if not</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_get_y_adc">
+int <code class="sig-name descname">touch_get_y_adc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_get_y_adc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides ADC value for Y coordinate</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>uint16_t with max value no more 4095 (12 bit ADC)</p>
+</dd>
+<dt class="field-even">param context</dt>
+<dd class="field-even"><p>should be used if touch_detect_touch() return 1</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_get_x_adc">
+int <code class="sig-name descname">touch_get_x_adc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_get_x_adc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides ADC value for X coordinate</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>uint16_t with max value no more 4095 (12 bit ADC)</p>
+</dd>
+<dt class="field-even">param context</dt>
+<dd class="field-even"><p>should be used if touch_detect_touch() return 1</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_lcd_gpio_init">
+void <code class="sig-name descname">touch_lcd_gpio_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_lcd_gpio_init" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize MCU to the state for LCD drawing mode</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_get_x_voltage">
+float <code class="sig-name descname">touch_get_x_voltage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_get_x_voltage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides voltage value from ADC pin for X coordinate</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>float max value no more then 3.3 V</p>
+</dd>
+<dt class="field-even">param context</dt>
+<dd class="field-even"><p>Should be used if touch_detect_touch() return 1</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_get_y_voltage">
+float <code class="sig-name descname">touch_get_y_voltage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_get_y_voltage" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides voltage value from ADC pin for Y coordinate</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>float max value no more then 3.3 V</p>
+</dd>
+<dt class="field-even">param context</dt>
+<dd class="field-even"><p>Should be used after touch_detect_touch() return 1</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_get_x_coord_lcd">
+int <code class="sig-name descname">touch_get_x_coord_lcd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_get_x_coord_lcd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides calibrated X coordinate of LCD</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>uint16_t value from 0 to X_PIX_MAX</p>
+</dd>
+<dt class="field-even">param context</dt>
+<dd class="field-even"><p>should be used after touch_detect_touch() return 1</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_get_y_coord_lcd">
+int <code class="sig-name descname">touch_get_y_coord_lcd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_get_y_coord_lcd" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides calibrated Y coordinate of LCD</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>uint16_t value from 0 to Y_PIX_MAX</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.x_messuring_init">
+void <code class="sig-name descname">x_messuring_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.x_messuring_init" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize GPIO and ADC for X messuring</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.y_messuring_init">
+void <code class="sig-name descname">y_messuring_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.y_messuring_init" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize GPIO and ADC for Y messuring</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.adc_messuring">
+int <code class="sig-name descname">adc_messuring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.adc_messuring" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides ADC value</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param hadc</dt>
+<dd class="field-odd"><p>ADC handler structure</p>
+</dd>
+<dt class="field-even">return</dt>
+<dd class="field-even"><p>uint16_t max value no more 4095 (12 bit ADC)</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.messuring_cord">
+int <code class="sig-name descname">messuring_cord</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.messuring_cord" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Provides X or Y coordinate</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param cord</dt>
+<dd class="field-odd"><p>if 0 mesures X coordinate if 1 measures Y coordinate</p>
+</dd>
+<dt class="field-even">return</dt>
+<dd class="field-even"><p>Not calibrated coordinate value</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.compare">
+int <code class="sig-name descname">compare</code><span class="sig-paren">(</span><em class="property">const</em> void *<em>a</em>, <em class="property">const</em> void *<em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#c.compare" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Comparison function for qsort()</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>first argument</p>
+</dd>
+<dt class="field-even">param b</dt>
+<dd class="field-even"><p>second argument</p>
+</dd>
+<dt class="field-odd">return</dt>
+<dd class="field-odd"><p>negative integer value if the first argument is less than the second
+a positive integer value if the first argument is greater than the second
+and zero if the arguments are equa</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.average_array">
+int <code class="sig-name descname">average_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.average_array" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calculate average value of the array</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param array</dt>
+<dd class="field-odd"><p>array of integer</p>
+</dd>
+<dt class="field-even">return</dt>
+<dd class="field-even"><p>average integer value</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_calibr">
+void <code class="sig-name descname">touch_calibr</code><span class="sig-paren">(</span>float *<em>pkX</em>, float *<em>pkY</em>, int *<em>p_offsetX</em>, int*<span class="sig-paren">)</span><a class="headerlink" href="#c.touch_calibr" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calibrates touch screen</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param pkX</dt>
+<dd class="field-odd"><p>proportional coefficient X axis</p>
+</dd>
+<dt class="field-even">param pkY</dt>
+<dd class="field-even"><p>proportional coefficient Y axis</p>
+</dd>
+<dt class="field-odd">param p_offsetX</dt>
+<dd class="field-odd"><p>X origin offset</p>
+</dd>
+<dt class="field-even">param p_offsetX</dt>
+<dd class="field-even"><p>Y origin offset</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.calibr_start">
+void <code class="sig-name descname">calibr_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.calibr_start" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Displays the message of the calibration beginning</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.set_point">
+void <code class="sig-name descname">set_point</code><span class="sig-paren">(</span>int <em>point_x</em>, int <em>point_y</em><span class="sig-paren">)</span><a class="headerlink" href="#c.set_point" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Displays that curent point calibration compleated</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param point_x</dt>
+<dd class="field-odd"><p>X coordinate of calibrated point</p>
+</dd>
+<dt class="field-even">param point_y</dt>
+<dd class="field-even"><p>Y coordinate of calibrated point</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.fun_pointer_diff">
+void <code class="sig-name descname">fun_pointer_diff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.fun_pointer_diff" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Functions pointer definition related to LCD screen operation</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param context</dt>
+<dd class="field-odd"><p>Definition could be changed to another LCD’s library accordingly.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.calibr_stop">
+void <code class="sig-name descname">calibr_stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.calibr_stop" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Displays the massage about calibration finish</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.touch_error_handler">
+void <code class="sig-name descname">touch_error_handler</code><span class="sig-paren">(</span>char *<em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#c.touch_error_handler" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Displays the error on the screen and blocks execution</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param error</dt>
+<dd class="field-odd"><p>Error code or description.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">TouchScreenDriver’s documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/touch.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="TouchScreenDriver’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TouchScreenDriver  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">touch.c – source file of TouchScreenDriver</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Oleksandr Ivanov.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+    </div>
+  </body>
+</html>
